@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Pierre Fikota</title>
+    <title>CV / Lebenslauf - Pierre Fikota</title>
     <style>
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #34495e;
+            --accent-color: #27ae60;
             --text-color: #333333;
             --light-bg: #f8f9fa;
             --border-color: #dcdde1;
@@ -24,12 +25,36 @@
             line-height: 1.5;
             color: var(--text-color);
             background-color: #ffffff;
-            padding: 40px;
+            padding: 40px 20px;
         }
 
         .container {
             max-width: 850px;
             margin: 0 auto;
+        }
+
+        /* Language Switcher / Navigation Link Hint */
+        .lang-nav {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .lang-nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+        .lang-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Language Section Divider */
+        .section-divider {
+            margin: 60px 0;
+            border: 0;
+            border-top: 5px double var(--primary-color);
+            page-break-before: always;
         }
 
         /* Header */
@@ -40,6 +65,8 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .header-title h1 {
@@ -51,7 +78,7 @@
         }
 
         .header-title h2 {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--secondary-color);
             font-weight: 600;
         }
@@ -61,6 +88,16 @@
             font-size: 13px;
             color: #555;
             line-height: 1.4;
+            min-width: 250px;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
         /* Sections */
@@ -91,11 +128,28 @@
             gap: 15px;
         }
 
+        @media (max-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .contact-info {
+                text-align: left;
+            }
+        }
+
         .skills-category {
             background-color: var(--light-bg);
             padding: 12px;
             border-radius: 4px;
             border-left: 3px solid var(--secondary-color);
+        }
+
+        .skills-category.highlight {
+            border-left-color: var(--accent-color);
         }
 
         .skills-category h4 {
@@ -121,10 +175,14 @@
             position: absolute;
             left: 0;
         }
+        
+        .skills-category.highlight li::before {
+            color: var(--accent-color);
+        }
 
         /* Experience & Education Timelines */
         .item {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .item-header {
@@ -153,6 +211,19 @@
             font-size: 13px;
         }
 
+        .history-grid {
+            margin-top: 8px; 
+            font-size: 13px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 5px 20px;
+        }
+        @media (max-width: 600px) {
+            .history-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Print Optimization */
         @media print {
             body {
@@ -161,6 +232,9 @@
             }
             .container {
                 max-width: 100%;
+            }
+            .lang-nav {
+                display: none;
             }
             @page {
                 size: A4;
@@ -171,130 +245,299 @@
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+            .section-divider {
+                page-break-before: always;
+                margin: 0;
+                border: none;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <div class="header-title">
-            <h1>Pierre Fikota</h1>
-            <h2>Network Administrator | System Support Specialist | Certified Logistician</h2>
-        </div>
-        <div class="contact-info">
-            <p>Mitisgasse 15/1/14, 1140 Vienna, Austria</p>
-            <p>Phone: +43 677 62127550</p>
-            <p>Email: pierre.fikota@gmail.com</p>
-            <p>DoB: July 12, 1980 | Nationality: Austrian</p>
-        </div>
-    </header>
 
-    <section>
-        <h3>Professional Objective</h3>
-        <p class="objective">
-            Seeking a challenging position in Network & Server/Client Administration, IT Support, Database Administration, Web Design, or Logistics & Security Operations. Bringing 4 years of specialized vocational training combined with over 12 years of hands-on experience in technical user support, IT consulting, and comprehensive warehouse management. Fast, precise, and highly solution-oriented.
-        </p>
-    </section>
+    <div class="lang-nav">
+        <a href="#english-cv">▼ English Version</a> | 
+        <a href="#german-cv">▼ Deutsche Version</a>
+    </div>
 
-    <section>
-        <h3>Core Skills & Competencies</h3>
-        <div class="skills-grid">
-            <div class="skills-category">
-                <h4>Information Technology & Systems</h4>
-                <ul>
-                    <li>Planning, building, configuring, and managing network topologies and routers.</li>
-                    <li>Software/hardware diagnostics, custom PC building, laptop & mobile repairs.</li>
-                    <li>Web development (HTML, PHP, CSS) and database administration (MySQL).</li>
-                    <li>Data security management and technical IT retail consulting.</li>
-                </ul>
+    <div id="english-cv">
+        <header>
+            <div class="header-title">
+                <h1>Pierre Fikota</h1>
+                <h2>Network Administrator | System Support Specialist | Certified Logistician</h2>
             </div>
-            <div class="skills-category">
-                <h4>Logistics & Operations</h4>
-                <ul>
-                    <li>12 years of experience with high-shelf, side-loader, and electric forklifts.</li>
-                    <li>Full inventory control, precision picking, and professional packaging.</li>
-                    <li>Core strengths: Highly organized, team-oriented, and dedicated to client satisfaction.</li>
-                </ul>
+            <div class="contact-info">
+                <p>Waldrebengasse 3/1/13, 1220 Vienna, Austria</p>
+                <p>Phone: +43 677 62127550 | Email: pierre.fikota@gmail.com</p>
+                <p>DoB: July 12, 1980 | Nationality: Austrian</p>
+                <p>Online CV: <a href="https://pierre.fikota.lovable.app" target="_blank">pierre.fikota.lovable.app</a></p>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <section>
-        <h3>Education & Professional Certifications</h3>
-        
-        <div class="item">
-            <div class="item-header">
-                <span>Systembetreuung / Netzwerkadministration (Network & System Administration)</span>
-                <span>2003</span>
-            </div>
-            <div class="item-sub">WIFI Wien (Wirtschaftskammer Wien)</div>
-            <div class="item-description">Intensive 546-hour professional certification program. Passed the final board examination with "Good Success" (Guter Erfolg).</div>
-        </div>
+        <section>
+            <h3>Professional Objective</h3>
+            <p class="objective">
+                Seeking a challenging position in Network & Server/Client Administration, IT Support, Database Administration, Web Design, or Logistics & Security Operations. Bringing 4 years of specialized vocational training combined with extensive hands-on experience in technical user support, advanced AI integration, systems engineering, and comprehensive warehouse management. Fast, precise, and highly solution-oriented.
+            </p>
+        </section>
 
-        <div class="item">
-            <div class="item-header">
-                <span>Zertifizierter Lagerlogistiker (Certified Warehouse Logistics Specialist)</span>
-                <span>2010</span>
+        <section>
+            <h3>Core Skills & Competencies</h3>
+            <div class="skills-grid">
+                <div class="skills-category highlight">
+                    <h4>Advanced AI & Systems Engineering</h4>
+                    <ul>
+                        <li><strong>Local & Cloud AI Infrastructure:</strong> Deploying local LLMs and architectures (Ollama, OpenClaw, Hermes) across Linux and mobile platforms.</li>
+                        <li><strong>Data Privacy & AI Operations:</strong> Setting up secure, local, offline AI ecosystems ensuring absolute data sovereignty and data protection.</li>
+                        <li><strong>AI Engineering & Security:</strong> Advanced multi-agent orchestration, systemic prompting, AI automation workflows, and jailbreak vulnerability testing.</li>
+                        <li><strong>Android Deep-Level Engineering:</strong> Extensive experience in custom ROM flashing, bootloader unlocking, rooting, and Termux Linux optimization (>1,000 devices).</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>Information Technology & Automation</h4>
+                    <ul>
+                        <li>Planning, building, configuring, and managing network topologies and routers.</li>
+                        <li>Software/hardware diagnostics, custom PC building, laptop & mobile repairs.</li>
+                        <li>Automation scripting (Python, JavaScript) & media processing (FFmpeg, MoviePy).</li>
+                        <li>Web development (HTML, PHP, CSS) and database administration (MySQL).</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>Management & Leadership</h4>
+                    <ul>
+                        <li>Proven track record in operational leadership as Deputy Managing Director.</li>
+                        <li>Resource allocation, team supervision, back-office optimization, and corporate client support.</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>Logistics & Operations</h4>
+                    <ul>
+                        <li>12 years of professional experience with high-shelf, side-loader, and electric forklifts.</li>
+                        <li>Full inventory control, precision picking, and professional packaging workflows.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="item-sub">Berufsförderungsinstitut (BFI) Wien</div>
-            <div class="item-description">Advanced certification in structural logistics. Passed with "Excellent Success" (Ausgezeichneter Erfolg).</div>
-        </div>
+        </section>
 
-        <div class="item">
-            <div class="item-header">
-                <span>European Computer Driving Licence (ECDL Core & Advanced)</span>
-                <span>2009</span>
+        <section>
+            <h3>Education & Professional Certifications</h3>
+            
+            <div class="item">
+                <div class="item-header">
+                    <span>Systembetreuung / Netzwerkadministration (Network & System Administration)</span>
+                    <span>2003</span>
+                </div>
+                <div class="item-sub">WIFI Wien (Wirtschaftskammer Wien)</div>
+                <div class="item-description">Intensive 546-hour professional certification program. Passed the final board examination with "Good Success" (Guter Erfolg).</div>
             </div>
-            <div class="item-sub">Austrian Computer Society (OCG)</div>
-            <div class="item-description">Fully certified in IT Concepts, File Management, Word Processing, Spreadsheets, Databases, Presentations, and IT Communication.</div>
-        </div>
 
-        <div class="item">
-            <div class="item-header">
-                <span>Staplerführerausweis (Certified Forklift Operator License)</span>
-                <span>2001</span>
+            <div class="item">
+                <div class="item-header">
+                    <span>Zertifizierter Lagerlogistiker (Certified Warehouse Logistics Specialist)</span>
+                    <span>2010</span>
+                </div>
+                <div class="item-sub">Berufsförderungsinstitut (BFI) Wien</div>
+                <div class="item-description">Advanced certification in structural logistics. Passed with "Excellent Success" (Ausgezeichneter Erfolg).</div>
             </div>
-            <div class="item-sub">Berufsförderungsinstitut (BFI) Wien</div>
-            <div class="item-description">Official 40-hour theoretical and practical licensing training program.</div>
-        </div>
-    </section>
 
-    <section>
-        <h3>Professional History</h3>
-        <div class="item">
-            <div class="item-description">
-                Across various employment tenures, responsibilities encompassed multi-disciplinary functions including IT infrastructure management, front-end web development, system security, hardware diagnostics, back-office administration, and commercial logistics:
+            <div class="item">
+                <div class="item-header">
+                    <span>European Computer Driving Licence (ECDL Core & Advanced)</span>
+                    <span>2009</span>
+                </div>
+                <div class="item-sub">Austrian Computer Society (OCG)</div>
+                <div class="item-description">Fully certified in IT Concepts, File Management, Word Processing, Spreadsheets, Databases, Presentations, and IT Communication.</div>
             </div>
-            <div style="margin-top: 8px; font-size: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px 20px;">
-                <div><strong>2025:</strong> One 4 All Security GmbH</div>
-                <div><strong>2012:</strong> WGKK (Wiener Gebietskrankenkasse)</div>
-                <div><strong>2024:</strong> Althiburos GmbH</div>
-                <div><strong>2011 – 2012:</strong> OSC</div>
-                <div><strong>2018:</strong> QWERTY</div>
-                <div><strong>2010 – 2011:</strong> Manpower</div>
-                <div><strong>2015 – 2017:</strong> IGROW (Breeding, Back-Office & Sales)</div>
-                <div><strong>2008 – 2010:</strong> Prompt</div>
-                <div><strong>2014 – 2015:</strong> Stammbaum</div>
-                <div><strong>2003 – 2007:</strong> Adecco</div>
-                <div><strong>2013:</strong> GetWork</div>
-                <div><strong>2002 – 2003:</strong> Armed Forces (Bundesheer)</div>
-            </div>
-            <div style="margin-top: 5px; font-size: 13px; display: grid; grid-template-columns: 1fr; gap: 5px;">
-                <div><strong>1998 – 2002:</strong> Logistics Specialist | Honda & Libro Logistics Centers Austria</div>
-                <div><strong>1997 – 1998:</strong> Logistics & Sorting Specialist | Post & Telekom Austria AG</div>
-                <div><strong>1996 – 1997:</strong> Carpentry Apprentice | Martin Jäger Keg.</div>
-            </div>
-        </div>
-    </section>
 
-    <section>
-        <h3>Languages</h3>
-        <div class="lang-list">
-            <p><strong>German:</strong> Native Speaker</p>
-            <p><strong>English:</strong> Independent B1 Level (Strong competencies in listening, reading, and writing; basic A1/A2 conversational fluency)</p>
-        </div>
-    </section>
+            <div class="item">
+                <div class="item-header">
+                    <span>Staplerführerausweis (Certified Forklift Operator License)</span>
+                    <span>2001</span>
+                </div>
+                <div class="item-sub">Berufsförderungsinstitut (BFI) Wien</div>
+                <div class="item-description">Official 40-hour theoretical and practical licensing training program.</div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Professional History</h3>
+            <div class="item">
+                <div class="item-description">
+                    Across various employment tenures, responsibilities encompassed multi-disciplinary functions including operational management, IT infrastructure management, front-end web development, system security, hardware diagnostics, back-office administration, and commercial logistics:
+                </div>
+                <div class="history-grid">
+                    <div><strong>2025:</strong> One 4 All Security GmbH</div>
+                    <div><strong>2018:</strong> quer — <em>Deputy Managing Director</em></div>
+                    <div><strong>2024:</strong> Althiburos GmbH</div>
+                    <div><strong>2015 – 2017:</strong> IGROW (Breeding, Back-Office & Sales)</div>
+                    <div><strong>2014 – 2015:</strong> Stammbaum</div>
+                    <div><strong>2013:</strong> iclo — <em>Deputy Managing Director</em></div>
+                    <div><strong>2013:</strong> GetWork</div>
+                    <div><strong>2012:</strong> WGKK (Wiener Gebietskrankenkasse)</div>
+                    <div><strong>2011 – 2012:</strong> OSC</div>
+                    <div><strong>2010 – 2011:</strong> Manpower</div>
+                    <div><strong>2008 – 2010:</strong> Prompt</div>
+                    <div><strong>2003 – 2007:</strong> Adecco</div>
+                    <div><strong>2002 – 2003:</strong> Armed Forces (Bundesheer)</div>
+                </div>
+                <div style="margin-top: 8px; font-size: 13px; display: grid; grid-template-columns: 1fr; gap: 5px;">
+                    <div><strong>1998 – 2002:</strong> Logistics Specialist | Honda & Libro Logistics Centers Austria</div>
+                    <div><strong>1997 – 1998:</strong> Logistics & Sorting Specialist | Post & Telekom Austria AG</div>
+                    <div><strong>1996 – 1997:</strong> Carpentry Apprentice | Martin Jäger Keg.</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Languages</h3>
+            <div class="lang-list">
+                <p><strong>German:</strong> Native Speaker</p>
+                <p><strong>English:</strong> Independent B1 Level (Strong competencies in listening, reading, and writing; basic A1/A2 conversational fluency)</p>
+            </div>
+        </section>
+    </div>
+
+    <hr class="section-divider">
+
+    <div id="german-cv">
+        <header>
+            <div class="header-title">
+                <h1>Pierre Fikota</h1>
+                <h2>Netzwerkadministrator | System-Support-Spezialist | Zertifizierter Logistiker</h2>
+            </div>
+            <div class="contact-info">
+                <p>Waldrebengasse 3/1/13, 1220 Wien, Österreich</p>
+                <p>Tel: +43 677 62127550 | E-Mail: pierre.fikota@gmail.com</p>
+                <p>Geb.: 12. Juli 1980 | Staatsangehörigkeit: Österreichisch</p>
+                <p>Online-Lebenslauf: <a href="https://pierre.fikota.lovable.app" target="_blank">pierre.fikota.lovable.app</a></p>
+            </div>
+        </header>
+
+        <section>
+            <h3>Berufliches Ziel</h3>
+            <p class="objective">
+                Sucht eine anspruchsvolle Position in der Netzwerk- und Server/Client-Administration, im IT-Support, in der Datenbankadministration, im Webdesign oder in Logistik- und Sicherheitsoperationen. Ich bringe 4 Jahre spezialisierte Fachausbildung kombiniert mit umfassender praktischer Erfahrung im technischen User-Support, fortschrittlicher KI-Integration, System-Engineering und professioneller Lagerlogistik ein. Schnell, präzise und absolut lösungsorientiert.
+            </p>
+        </section>
+
+        <section>
+            <h3>Kernkompetenzen & Fähigkeiten</h3>
+            <div class="skills-grid">
+                <div class="skills-category highlight">
+                    <h4>Erweitertes KI- & System-Engineering</h4>
+                    <ul>
+                        <li><strong>Lokale & Cloud-KI-Infrastruktur:</strong> Bereitstellung lokaler LLMs und Architekturen (Ollama, OpenClaw, Hermes) auf Linux- und Mobilplattformen.</li>
+                        <li><strong>Datenschutz & KI-Betrieb:</strong> Aufbau sicherer, lokaler Offline-KI-Ökosysteme zur Gewährleistung absoluter Datensouveränität.</li>
+                        <li><strong>KI-Engineering & Sicherheit:</strong> Multi-Agenten-Orchestrierung, systemisches Prompting, KI-Automatisierungsworkflows und Jailbreak-Schachstellenanalyse.</li>
+                        <li><strong>Android-Deep-Level-Engineering:</strong> Fundierte Erfahrung mit Custom-ROM-Flashing, Bootloader-Unlocking, Rooting und Termux-Linux-Optimierung (>1.000 Geräte).</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>Informationstechnologie & Automatisierung</h4>
+                    <ul>
+                        <li>Planung, Aufbau, Konfiguration und Verwaltung von Netzwerktopologien und Routern.</li>
+                        <li>Software-/Hardware-Diagnose, PC-Eigenbau, Laptop- und Mobiltelefon-Reparaturen.</li>
+                        <li>Automatisierungs-Skripte (Python, JavaScript) & Medienverarbeitung (FFmpeg, MoviePy).</li>
+                        <li>Webentwicklung (HTML, PHP, CSS) und Datenbankadministration (MySQL).</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>Management & Führung</h4>
+                    <ul>
+                        <li>Nachweisbare Erfolge in der operativen Führung als stellvertretender Geschäftsführer.</li>
+                        <li>Ressourcenallokation, Teamüberwachung, Back-Office-Optimierung und Firmenkundenbetreuung.</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h4>Logistik & Operations</h4>
+                    <ul>
+                        <li>12 Jahre Berufserfahrung mit Hochregal-, Seitenstapler- und Elektrogabelstaplern.</li>
+                        <li>Vollständige Bestandskontrolle, Präzisionskommissionierung und professionelle Verpackungsabläufe.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Ausbildung & Berufliche Zertifikate</h3>
+            
+            <div class="item">
+                <div class="item-header">
+                    <span>Systembetreuung / Netzwerkadministration</span>
+                    <span>2003</span>
+                </div>
+                <div class="item-sub">WIFI Wien (Wirtschaftskammer Wien)</div>
+                <div class="item-description">Intensives 546-stündiges Fachzertifikatsprogramm. Die abschließende kommissionelle Prüfung wurde mit „Gutem Erfolg“ bestanden.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span>Zertifizierter Lagerlogistiker</span>
+                    <span>2010</span>
+                </div>
+                <div class="item-sub">Berufsförderungsinstitut (BFI) Wien</div>
+                <div class="item-description">Fortgeschrittene Zertifizierung in struktureller Logistik. Mit „Ausgezeichnetem Erfolg“ bestanden.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span>European Computer Driving Licence (ECDL Core & Advanced)</span>
+                    <span>2009</span>
+                </div>
+                <div class="item-sub">Austrian Computer Society (OCG)</div>
+                <div class="item-description">Vollständig zertifiziert in IT-Grundlagen, Dateiverwaltung, Textverarbeitung, Tabellenkalkulation, Datenbanken, Präsentationen und IT-Kommunikation.</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span>Staplerführerausweis</span>
+                    <span>2001</span>
+                </div>
+                <div class="item-sub">Berufsförderungsinstitut (BFI) Wien</div>
+                <div class="item-description">Offizielles 40-stündiges theoretisches und praktisches Ausbildungsprogramm.</div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Beruflicher Werdegang</h3>
+            <div class="item">
+                <div class="item-description">
+                    In verschiedenen Anstellungsverhältnissen umfassten die Aufgaben multidisziplinäre Funktionen, darunter operatives Management, IT-Infrastrukturverwaltung, Front-End-Webentwicklung, Systemsicherheit, Hardware-Diagnose, Back-Office-Administration und kommerzielle Logistik:
+                </div>
+                <div class="history-grid">
+                    <div><strong>2025:</strong> One 4 All Security GmbH</div>
+                    <div><strong>2018:</strong> quer — <em>Stellvertretender Geschäftsführer</em></div>
+                    <div><strong>2024:</strong> Althiburos GmbH</div>
+                    <div><strong>2015 – 2017:</strong> IGROW (Zucht, Back-Office & Verkauf)</div>
+                    <div><strong>2014 – 2015:</strong> Stammbaum</div>
+                    <div><strong>2013:</strong> iclo — <em>Stellvertretender Geschäftsführer</em></div>
+                    <div><strong>2013:</strong> GetWork</div>
+                    <div><strong>2012:</strong> WGKK (Wiener Gebietskrankenkasse)</div>
+                    <div><strong>2011 – 2012:</strong> OSC</div>
+                    <div><strong>2010 – 2011:</strong> Manpower</div>
+                    <div><strong>2008 – 2010:</strong> Prompt</div>
+                    <div><strong>2003 – 2007:</strong> Adecco</div>
+                    <div><strong>2002 – 2003:</strong> Bundesheer (Präsenzdienst)</div>
+                </div>
+                <div style="margin-top: 8px; font-size: 13px; display: grid; grid-template-columns: 1fr; gap: 5px;">
+                    <div><strong>1998 – 2002:</strong> Logistikspezialist | Honda & Libro Logistikzentren Österreich</div>
+                    <div><strong>1997 – 1998:</strong> Sortier- und Logistikspezialist | Post & Telekom Austria AG</div>
+                    <div><strong>1996 – 1997:</strong> Tischler-Lehrling | Martin Jäger Keg.</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Sprachen</h3>
+            <div class="lang-list">
+                <p><strong>Deutsch:</strong> Muttersprache</p>
+                <p><strong>Englisch:</strong> Selbstständiges B1-Niveau (Starke Kompetenzen im Hören, Lesen und Schreiben; grundlegende A1/A2 Konversationsfähigkeit)</p>
+            </div>
+        </section>
+    </div>
+
 </div>
 
 </body>
